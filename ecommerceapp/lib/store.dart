@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/core/routing/app_router.dart';
+import 'package:ecommerceapp/features/home/ui/screens/home.dart';
 import 'package:ecommerceapp/features/on_boarding/ui/screens/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,11 +11,11 @@ class Store extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize:const Size(375, 812),
+      designSize: const Size(375, 812),
       minTextAdapt: true,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home:const OnBoardingScreen(),
+        home: Home(),
         onGenerateRoute: appRouter.generateRoute,
       ),
     );
