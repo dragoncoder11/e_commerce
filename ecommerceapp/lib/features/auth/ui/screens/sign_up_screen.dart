@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/features/auth/ui/widgets/sign_up_body.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/theming/colors.dart';
 import '../../../../core/theming/styles.dart';
@@ -9,9 +10,14 @@ class SignUpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(
-          Icons.arrow_back_ios,
-          color: lightOrange,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: const Icon(
+            Icons.arrow_back_ios,
+            color: lightOrange,
+          ),
         ),
         title: Text(
           'Sign Up',
@@ -19,7 +25,7 @@ class SignUpScreen extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: const SignUpScreen(),
+      body: const SignUpScreenBody(),
     );
   }
 }

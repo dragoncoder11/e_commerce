@@ -39,14 +39,14 @@ class OnBoardingScreenBody extends StatelessWidget {
             verticalSpace(50),
             CustomButton(
               onPressed: () {
-                Navigator.of(context).pushNamed(Routes.loginScreen);
+                Navigator.of(context).pushNamed(Routes.signUpScreen);
               },
               title: 'Sign up',
             ),
             verticalSpace(16),
             CustomButton(
               onPressed: () {
-                Navigator.of(context).pushNamed(Routes.signUpScreen);
+                Navigator.of(context).pushNamed(Routes.loginScreen);
               },
               title: 'Sign in',
               textStyle: Styles.font17LightOrangeWeight500,

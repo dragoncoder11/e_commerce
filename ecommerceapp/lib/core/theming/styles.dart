@@ -33,6 +33,11 @@ class Styles{
     fontSize: 18.sp,
     color: lightOrange
   );
+   static TextStyle font14LightOrangeWeight400=TextStyle(
+    fontWeight: FontWeight.w400,
+    fontSize: 14.sp,
+    color: lightOrange
+  );
     static TextStyle font18BrownWeight400=TextStyle(
     fontWeight: FontWeight.w400,
     fontSize: 18.sp,
