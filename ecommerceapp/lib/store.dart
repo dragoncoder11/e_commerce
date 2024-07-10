@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/core/helper/constants.dart';
 import 'package:ecommerceapp/core/routing/app_router.dart';
 import 'package:ecommerceapp/features/home/ui/screens/home.dart';
 import 'package:ecommerceapp/features/on_boarding/ui/screens/on_boarding_screen.dart';
@@ -15,7 +16,7 @@ class Store extends StatelessWidget {
       minTextAdapt: true,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: Home(),
+        home:(token==null ||token!.isEmpty)?const OnBoardingScreen():Home(),
         onGenerateRoute: appRouter.generateRoute,
       ),
     );

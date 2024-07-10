@@ -16,7 +16,7 @@ class CustomTextField extends StatefulWidget {
     this.suffixIcon,
     this.obscureText,
     this.suffixIconColor,
-    this.textFieldColor, this.cursorColor,
+    this.textFieldColor, this.cursorColor, this.controller, required this.validator,
   });
   final String hint;
   final TextStyle? hintStyle;
@@ -30,6 +30,8 @@ class CustomTextField extends StatefulWidget {
   bool? obscureText;
   final Color? cursorColor;
   final Color? suffixIconColor;
+  final TextEditingController ?controller;
+  final Function(String?) validator;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -39,6 +41,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: widget.controller,
       style: Styles.font16LightBrownWeight400,
       decoration: InputDecoration(
         fillColor: widget.textFieldColor ?? lightergrey,
@@ -58,6 +61,16 @@ class _CustomTextFieldState extends State<CustomTextField> {
           borderSide: BorderSide(
               color: widget.borderColor ?? Colors.grey, width: widget.borderWidth ?? 0),
         ),
+        focusedErrorBorder:  OutlineInputBorder(
+          borderRadius: BorderRadius.circular(widget.radius ?? 5),
+          borderSide: BorderSide(
+              color: widget.borderColor ?? Colors.red, width: widget.borderWidth ?? 1),
+        ),
+        errorBorder:  OutlineInputBorder(
+          borderRadius: BorderRadius.circular(widget.radius ?? 5),
+          borderSide: BorderSide(
+              color: widget.borderColor ?? Colors.red, width: widget.borderWidth ?? 1),
+        ),
         suffixIcon: (widget.hint.toLowerCase().contains('password'))
             ? IconButton(
                 onPressed: () {
@@ -74,6 +87,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
       ),
       cursorColor: widget.cursorColor??lightOrange,
       obscureText: widget.obscureText ?? false,
+      validator: (value) {
+        return widget.validator(value);
+      },
     );
   }
 }
