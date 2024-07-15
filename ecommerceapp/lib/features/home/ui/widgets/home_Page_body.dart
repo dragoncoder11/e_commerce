@@ -5,7 +5,6 @@ import 'package:ecommerceapp/features/home/ui/widgets/products_grid_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'custom_categories_list_view.dart';
 
 class HomePageBody extends StatelessWidget {
@@ -13,48 +12,34 @@ class HomePageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return SingleChildScrollView(
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 8.h),
-        child: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(horizontal: 12),
+        child: Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               verticalSpace(15),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                ),
-                child: Expanded(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        BannersCard(),
-                        verticalSpace(24),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Categories',
-                              style: Styles.font22BrownWeight700,
-                            ),
-                            Text(
-                              'see all',
-                              style: Styles.font18LightOrangeWeight400,
-                            ),
-                          ],
-                        ),
-                        verticalSpace(24),
-                        const CustomCategoriesListView(),
-                        verticalSpace(16),
-                        const ProductsGridView()
-                      ],
-                    ),
+              BannersCard(),
+              verticalSpace(24),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Categories',
+                    style: Styles.font22BrownWeight700,
                   ),
-                ),
+                  Text(
+                    'see all',
+                    style: Styles.font18LightOrangeWeight400,
+                  ),
+                ],
               ),
-           
+              verticalSpace(24),
+              const CustomCategoriesListView(),
+              verticalSpace(16),
+              const ProductsGridView(),
             ],
           ),
         ),

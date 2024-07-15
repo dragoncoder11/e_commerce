@@ -7,6 +7,6 @@ import 'package:ecommerceapp/features/home/data/models/products_model.dart';
 abstract class HomeRepo{
   Future <Either<ServerFailure,List<BannersModel>>>fetchBanners();
   Future <Either<ServerFailure,List<CategoriesModel>>>fetchCategories();
-    Future <Either<ServerFailure,List<CartModel>>>fetchProducts({required String categoryName});
+    Future <Either<ServerFailure,List<ProductModel>>>fetchProducts({required String categoryName});
 
 }

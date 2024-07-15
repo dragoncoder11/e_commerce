@@ -7,6 +7,7 @@ const Color lightergrey=Color(0xffF3F3F3);
 const Color whiteColor=Color(0xffffffff);
 const Color lighterBrown=Color(0xffAC8E71);
 const Color grey=Color(0xff929292);
+const Color scaffoldBackgroundColor= Color.fromARGB(255, 244, 240, 240);
 
 
 

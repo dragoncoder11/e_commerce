@@ -30,6 +30,7 @@ class _HomeState extends State<Home> {
         unselectedItemColor: brown,
         currentIndex: selectedIndex,
         type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.transparent,
         onTap: (value) {
           
           setState(() {

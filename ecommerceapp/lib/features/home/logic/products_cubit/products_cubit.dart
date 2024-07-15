@@ -3,7 +3,6 @@ import 'package:dio/dio.dart';
 import 'package:ecommerceapp/features/home/data/models/products_model.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:meta/meta.dart';
-
 import '../../../../core/failure/failure.dart';
 import '../../data/models/categories_model.dart';
 import '../../data/repos/home_page_repo_implementation.dart';
@@ -13,8 +12,8 @@ part 'products_state.dart';
 class ProductsCubit extends Cubit<ProductsState> {
   ProductsCubit() : super(ProductsInitial());
   HomeRepoImpl homeRepoImpl = HomeRepoImpl();
-  Box<CategoriesModel>? _productsBox;
-  List<CartModel> allProducts = [];
+ // Box<CategoriesModel>? _productsBox;
+  List<ProductModel> allProducts = [];
 
   fetchProducts({required String categoryName}) async {
     try {

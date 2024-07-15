@@ -44,13 +44,13 @@ class HomeRepoImpl extends HomeRepo{
   }
 
   @override
-    List<CartModel>products=[];
+    List<ProductModel>products=[];
 
-  Future<Either<ServerFailure, List<CartModel>>> fetchProducts({required String categoryName})async {
+  Future<Either<ServerFailure, List<ProductModel>>> fetchProducts({required String categoryName})async {
  try {
   var data =await productsService.getProducts(endPoint:'products/search?',categoryName:categoryName );
   for (var i in data['data']['data']) {
-    products.add(CartModel.fromJson(i));
+    products.add(ProductModel.fromJson(i));
   }
   return right(products);
 } on DioError catch (e) {

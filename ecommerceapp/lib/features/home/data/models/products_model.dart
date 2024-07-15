@@ -1,41 +1,37 @@
-import 'package:hive/hive.dart';
+  import 'package:hive/hive.dart';
 
 //part 'products_model.g.dart;
+
 @HiveType(typeId:2)
-class CartModel {
+class ProductModel {
 @HiveField(0)
   final num? id;
   @HiveField(1)
-  int quantity = 1;
-  @HiveField(2)
-  final ProductModel? product;
-
-  CartModel({this.id, required this.product, required this.quantity});
-  factory CartModel.fromJson(json) {
-    return CartModel(
-        id: json['id'],
-        product: ProductModel.fromJson(json['product']),
-        quantity: json['quantity']);
-  }
-}
-
-class ProductModel {
-  final num? id;
   final String? name;
+  @HiveField(2)
   final num? price;
+/*   @HiveField(3)
   final num? oldPrice;
-  final num? discount;
+  @HiveField(4)
+  final num? discount; */
+  @HiveField(3)
   final String? image;
+@HiveField(4) 
   final String? desc;
+  @HiveField(5)
   final List<dynamic>? images;
+    @HiveField(6)
+
+  int?quantity=1;
 
   ProductModel(
       {required this.id,
       required this.name,
       required this.price,
-      required this.oldPrice,
-      required this.discount,
+     // required this.oldPrice,
+    //  required this.discount,
       required this.image,
+      this.quantity,
       required this.desc,
       required this.images});
   factory ProductModel.fromJson(json) {
@@ -43,10 +39,12 @@ class ProductModel {
         id: json['id'],
         name: json['name'],
         price: json['price'],
-        oldPrice: json['old_price'],
-        discount: json['discount'],
+       // oldPrice: json['old_price'],
+      //  discount: json['discount'],
         image: json['image'],
         desc: json['description'],
         images: json['images']);
   }
 }
+ 
+

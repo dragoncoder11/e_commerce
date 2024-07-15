@@ -11,10 +11,10 @@ class ProductsGridView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          ProductsCubit()..fetchProducts(categoryName: 'electronic devices'),
+          ProductsCubit()..fetchProducts(categoryName: 'electrionic devices'),
       child: BlocConsumer<ProductsCubit, ProductsState>(
         listener: (context, state) {
-           if (state is FailedToGetProductsState) {
+          if (state is FailedToGetProductsState) {
             showDialog(
               context: context,
               builder: (context) {
@@ -27,31 +27,32 @@ class ProductsGridView extends StatelessWidget {
           }
         },
         builder: (context, state) {
-           if (state is ProductsLoadingState) {
-            return Center(
-              child: Lottie.asset('assets/loading.json'),
+          if (state is ProductsLoadingState) {
+            return Expanded(
+              child: Center(
+                child: Lottie.asset('assets/loading.json'),
+              ),
             );
-          }
-          else if(state is ProductsSuccessState){
- return SizedBox(
-            height: 1500,
-            child: GridView.builder(
-                padding: EdgeInsets.zero,
+          } else if (state is ProductsSuccessState) {
+            return Expanded(
+              child: GridView.builder(
                 physics: const NeverScrollableScrollPhysics(),
+                padding: EdgeInsets.zero,
                 itemCount: state.products.length,
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 200,
-                    childAspectRatio: 1.1 / 1.3,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10),
+                  maxCrossAxisExtent: 200,
+                  childAspectRatio: 3 / 4,
+                  crossAxisSpacing: 16,
+                  mainAxisSpacing: 16,
+                ),
                 itemBuilder: (context, index) {
-                  return  ProductCard(productModel: state.products[index].product!,);
-                }),
-          );
-          }else {
+                  return ProductCard(productModel: state.products[index]);
+                },
+              ),
+            );
+          } else {
             return const SizedBox.shrink();
           }
-         
         },
       ),
     );
