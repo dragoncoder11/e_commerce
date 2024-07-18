@@ -1,6 +1,6 @@
   import 'package:hive/hive.dart';
 
-//part 'products_model.g.dart;
+//part 'product_model.g.dart ;
 
 @HiveType(typeId:2)
 class ProductModel {
@@ -10,10 +10,6 @@ class ProductModel {
   final String? name;
   @HiveField(2)
   final num? price;
-/*   @HiveField(3)
-  final num? oldPrice;
-  @HiveField(4)
-  final num? discount; */
   @HiveField(3)
   final String? image;
 @HiveField(4) 
@@ -28,8 +24,6 @@ class ProductModel {
       {required this.id,
       required this.name,
       required this.price,
-     // required this.oldPrice,
-    //  required this.discount,
       required this.image,
       this.quantity,
       required this.desc,
@@ -39,8 +33,6 @@ class ProductModel {
         id: json['id'],
         name: json['name'],
         price: json['price'],
-       // oldPrice: json['old_price'],
-      //  discount: json['discount'],
         image: json['image'],
         desc: json['description'],
         images: json['images']);

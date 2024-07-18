@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:ecommerceapp/core/failure/failure.dart';
 import 'package:ecommerceapp/features/home/data/models/banners_model.dart';
 import 'package:ecommerceapp/features/home/data/models/categories_model.dart';
-import 'package:ecommerceapp/features/home/data/models/products_model.dart';
+import 'package:ecommerceapp/features/home/data/models/product_model.dart';
 import 'package:ecommerceapp/features/home/data/repos/home_page_repo.dart';
 import 'package:ecommerceapp/features/home/data/services/banners_services.dart';
 import 'package:ecommerceapp/features/home/data/services/categories_service.dart';
