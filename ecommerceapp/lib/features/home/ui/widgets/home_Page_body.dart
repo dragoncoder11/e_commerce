@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:ecommerceapp/core/helper/spacing.dart';
 import 'package:ecommerceapp/core/theming/styles.dart';
 import 'package:ecommerceapp/features/home/ui/widgets/banners_card.dart';
@@ -27,13 +28,20 @@ class HomePageBody extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'Categories',
-                  style: Styles.font22BrownWeight700,
+                FadeInLeft(
+                   delay: const Duration(microseconds: 700),
+                            duration: const Duration(seconds: 2),
+                  child: Text(
+                    'Categories',
+                    style: Styles.font22BrownWeight700,
+                  ),
                 ),
-                Text(
-                  'see all',
-                  style: Styles.font18LightOrangeWeight400,
+                FadeInRight( delay: const Duration(microseconds: 700),
+                            duration: const Duration(seconds: 2),
+                  child: Text(
+                    'see all',
+                    style: Styles.font18LightOrangeWeight400,
+                  ),
                 ),
               ],
             ),
@@ -43,8 +51,7 @@ class HomePageBody extends StatelessWidget {
           child: verticalSpace(16),
         ),
         const CustomCategoriesListView(),
-   
-         ProductsGridView(),
+        const ProductsGridView(),
       ],
     );
   }

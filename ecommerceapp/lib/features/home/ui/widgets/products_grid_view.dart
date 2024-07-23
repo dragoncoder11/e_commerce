@@ -1,11 +1,8 @@
-import 'package:ecommerceapp/core/theming/colors.dart';
 import 'package:ecommerceapp/features/home/logic/products_cubit/products_cubit.dart';
 import 'package:ecommerceapp/features/home/ui/widgets/products_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lottie/lottie.dart';
-import 'package:shimmer/shimmer.dart';
-
+import 'package:animate_do/animate_do.dart';
 import 'custom_shimmer_item.dart';
 
 class ProductsGridView extends StatelessWidget {
@@ -35,14 +32,17 @@ class ProductsGridView extends StatelessWidget {
           return SliverPadding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             sliver: SliverGrid.builder(
-                itemCount:/* cubit.allProducts.length*/6,
+                itemCount: /* cubit.allProducts.length*/ 6,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     mainAxisSpacing: 10,
                     crossAxisSpacing: 10,
                     mainAxisExtent: 220),
                 itemBuilder: (context, index) {
-                  return const CustomShimmerItem();
+                  return FadeInUp(
+                      delay: const Duration(microseconds: 700),
+                      duration: const Duration(seconds: 2),
+                      child: const CustomShimmerItem());
                 }),
           );
         } else if (state is ProductsSuccessState) {
@@ -56,7 +56,10 @@ class ProductsGridView extends StatelessWidget {
                     crossAxisSpacing: 10,
                     mainAxisExtent: 220),
                 itemBuilder: (context, index) {
-                  return ProductCard(productModel: state.products[index]);
+                  return FadeInUp(
+                      delay: const Duration(microseconds: 700),
+                      duration: const Duration(seconds: 2),
+                      child: ProductCard(productModel: state.products[index]));
                 }),
           );
         } else {

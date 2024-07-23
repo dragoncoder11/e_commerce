@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerceapp/core/helper/spacing.dart';
 import 'package:ecommerceapp/core/theming/styles.dart';
 import 'package:ecommerceapp/core/widgets/custom_circle_avatar.dart';
+import 'package:ecommerceapp/features/cart/logic/cart_cubit/cart_cubit.dart';
 import 'package:ecommerceapp/features/home/data/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,7 +19,7 @@ class ProductCard extends StatefulWidget {
 class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
-   // var cubit=BlocProvider.of<AddOrRemoveCartCubit>(context);
+    var cubit=BlocProvider.of<CartCubit>(context);
     return Container(
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
@@ -54,13 +55,14 @@ class _ProductCardState extends State<ProductCard> {
                CustomCircleAvatar(
                   radius: 17,
                   onTap: () {
+                    cubit.addOrRemoveCart(productId: widget.productModel.id.toString());
                     setState(() {
                       
                     });
                   },
                   backGroundColor: Colors.green,
                   child: Center(
-                      child: Icon(
+                      child: Icon(cubit.productsIdList.contains(widget.productModel.id.toString())?Icons.check:
                    Icons.add,
                     color: Colors.white,
                   )))

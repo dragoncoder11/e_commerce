@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:ecommerceapp/features/home/logic/categories_cubit/categories_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -62,31 +63,36 @@ class _CustomCategoriesListViewState extends State<CustomCategoriesListView> {
                               selectedIndex = index;
                               print(selectedIndex);
                             });
-                            BlocProvider.of<ProductsCubit>(context).fetchProducts(
-                                categoryName:
-                                    state.categories[index].name!.toString());
+                            BlocProvider.of<ProductsCubit>(context)
+                                .fetchProducts(
+                                    categoryName: state.categories[index].name!
+                                        .toString());
                             debugPrint(state.categories[selectedIndex].name!);
                           },
-                          child: AnimatedContainer(
-                            duration: const Duration(microseconds: 400),
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 3, vertical: 10),
-                            height: 50,
-                            width: 180,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15),
-                                border: Border.all(
-                                    width: selectedIndex == index ? 2 : 1,
-                                    color: selectedIndex == index
-                                        ? lightOrange
-                                        : lightBrown)),
-                            child: Center(
-                                child: Text(
-                              state.categories[index].name!,
-                              style: selectedIndex == index
-                                  ? Styles.font15LightOrangeWeight700
-                                  : Styles.font15BrownWeight700,
-                            )),
+                          child: FadeInRight(
+                            delay: const Duration(microseconds: 700),
+                            duration: const Duration(seconds: 2),
+                            child: AnimatedContainer(
+                              duration: const Duration(microseconds: 400),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 3, vertical: 10),
+                              height: 50,
+                              width: 180,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  border: Border.all(
+                                      width: selectedIndex == index ? 2 : 1,
+                                      color: selectedIndex == index
+                                          ? lightOrange
+                                          : lightBrown)),
+                              child: Center(
+                                  child: Text(
+                                state.categories[index].name!,
+                                style: selectedIndex == index
+                                    ? Styles.font15LightOrangeWeight700
+                                    : Styles.font15BrownWeight700,
+                              )),
+                            ),
                           ),
                         ));
                   },

@@ -11,7 +11,7 @@ class CartPageBody extends StatelessWidget {
     return Column(
       children: [
        // verticalSpace(40),
-        const Expanded(child: CartsListView()),
+        CartsListView(),
       ],
     );
   }

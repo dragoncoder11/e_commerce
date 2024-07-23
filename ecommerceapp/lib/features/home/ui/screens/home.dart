@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/core/theming/colors.dart';
+import 'package:ecommerceapp/features/cart/logic/cart_cubit/cart_cubit.dart';
 //import 'package:ecommerceapp/features/cart/logic/add_or_remove_cart_cubit/add_or_remove_cart_cubit.dart';
 import 'package:ecommerceapp/features/cart/ui/screens/cart_page.dart';
 import 'package:ecommerceapp/features/favourites/ui/screens/favourites_Page.dart';
@@ -21,38 +22,40 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int selectedIndex = 0;
 
-  final List pages =  [
+  final List pages = [
     MultiBlocProvider(providers: [
       BlocProvider<BannersCubit>(
-                    create: (context) => BannersCubit()..fetchBanners(),
-                  ),
-                   /*  BlocProvider<AddOrRemoveCartCubit>(
-                    create: (context) => AddOrRemoveCartCubit(),
-                  ), */
-                  BlocProvider<CategoriesCubit>(
-                    create: (context) => CategoriesCubit()..fetchCategories(),
-                  ),
-                  BlocProvider<ProductsCubit>(
-                    create: (context) => ProductsCubit()
-                      ..fetchProducts(categoryName: 'electrionic devices'),
-                  ),
-    ],child: HomePage()),
-   const CartPage(),
-   const FavouritesPage(),
-   const Profile()
+        create: (context) => BannersCubit()..fetchBanners(),
+      ),
+        BlocProvider<CartCubit>(
+                    create: (context) => CartCubit(),
+                  ), 
+      BlocProvider<CategoriesCubit>(
+        create: (context) => CategoriesCubit()..fetchCategories(),
+      ),
+      BlocProvider<ProductsCubit>(
+        create: (context) =>
+            ProductsCubit()..fetchProducts(categoryName: 'electrionic devices'),
+      ),
+    ], child: const HomePage()),
+
+    
+    const CartPage(),
+    const FavouritesPage(),
+    const Profile()
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(elevation: 0,
+      bottomNavigationBar: BottomNavigationBar(
+        elevation: 0,
         selectedItemColor: lightOrange,
         unselectedItemColor: brown,
         currentIndex: selectedIndex,
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.transparent,
         onTap: (value) {
-          
           setState(() {
             selectedIndex = value;
           });

@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerceapp/core/helper/spacing.dart';
 import 'package:ecommerceapp/features/home/logic/banners_cubit/banners_cubit.dart';
@@ -40,16 +41,19 @@ class BannersCard extends StatelessWidget {
                 child: CarouselSlider.builder(
                   itemCount: state.banners.length,
                   itemBuilder: (context, index, _) {
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: CachedNetworkImage(
-                        width: double.infinity,
-                        imageUrl: state.banners[index].image,
-                        fit: BoxFit.fill,
-                        placeholder: (context, url) =>
-                            Lottie.asset('assets/loading.json'),
-                        errorWidget: (context, url, error) =>
-                            const Icon(Icons.error),
+                    return FadeInDown( delay: const Duration(microseconds: 700),
+                            duration: const Duration(seconds: 2),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: CachedNetworkImage(
+                          width: double.infinity,
+                          imageUrl: state.banners[index].image,
+                          fit: BoxFit.fill,
+                          placeholder: (context, url) =>
+                              Lottie.asset('assets/loading.json'),
+                          errorWidget: (context, url, error) =>
+                              const Icon(Icons.error),
+                        ),
                       ),
                     );
                   },

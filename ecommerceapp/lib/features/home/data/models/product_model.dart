@@ -1,15 +1,15 @@
   import 'package:hive/hive.dart';
 
-part 'product_model.g.dart;
+//part 'product_model.g.dart;
 
 @HiveType(typeId:2)
 class ProductModel extends HiveObject{
 @HiveField(0)
-  final int? id;
+  final num? id;
   @HiveField(1)
   final String? name;
   @HiveField(2)
-  final double? price;
+  final num? price;
   @HiveField(3)
   final String? image;
 @HiveField(4) 

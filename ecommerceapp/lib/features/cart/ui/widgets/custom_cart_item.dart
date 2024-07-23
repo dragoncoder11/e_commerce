@@ -1,6 +1,7 @@
 
 import 'package:ecommerceapp/features/home/data/models/product_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/helper/spacing.dart';
@@ -25,68 +26,72 @@ final ProductModel productModel;
           children: [
             Row(
               children: [
-                Image.asset(
+                Image.network(
                   productModel.image!,
                   height: 80.h,
                   width: 100.w,
                   fit: BoxFit.cover,
                 ),
                 horizentalSpace(20),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      productModel.name!,
-                      style: Styles.font18BrownWeight700,
-                    ),
-                    verticalSpace(10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          height: 35.h,
-                          width: 90.w,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: Colors.grey.withOpacity(.2),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 3, vertical: 4),
-                            child: Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
-                              children: [
-                                const CustomCircleAvatar(
-                                  child: Center(
-                                    child: Icon(
-                                      Icons.add,
-                                      color: lightBrown,
-                                      size: 20,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        productModel.name!,
+                        overflow: TextOverflow.ellipsis,
+                        
+                        style: Styles.font18BrownWeight700,
+                      ),
+                      verticalSpace(10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            height: 35.h,
+                            width: 90.w,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: Colors.grey.withOpacity(.2),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 3, vertical: 4),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  const CustomCircleAvatar(
+                                    child: Center(
+                                      child: Icon(
+                                        Icons.add,
+                                        color: lightBrown,
+                                        size: 20,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Text(
-                                  '1',
-                                  style: Styles.font18BrownWeight400,
-                                ),
-                                const CustomCircleAvatar(
-                                  child: Center(
-                                    child: Icon(
-                                      Icons.remove,
-                                      color: lightBrown,
-                                      size: 20,
+                                  Text(
+                                    '1',
+                                    style: Styles.font18BrownWeight400,
+                                  ),
+                                  const CustomCircleAvatar(
+                                    child: Center(
+                                      child: Icon(
+                                        Icons.remove,
+                                        color: lightBrown,
+                                        size: 20,
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                        Text('\$${productModel.price}',style: Styles.font17LightOrangeWeight500,)
-                      ],
-                    )
-                  ],
+                          Text('\$${productModel.price}',style: Styles.font17LightOrangeWeight500,)
+                        ],
+                      )
+                    ],
+                  ),
                 )
               ],
             ),

@@ -4,7 +4,7 @@ part of 'cart_cubit.dart';
 sealed class CartState {}
 
 final class CartInitial extends CartState {}
-final class GetCartsLoading extends CartState {}
+//final class GetCartsLoading extends CartState {}
 final class GetCartsSuccess extends CartState {
   final List<ProductModel>carts;
 
