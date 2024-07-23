@@ -36,7 +36,8 @@ class ProductsCubit extends Cubit<ProductsState> {
           (failure) =>
               emit(FailedToGetProductsState(errMessage: failure.errMessage)),
           (products){
-        this.allProducts = products;
+        allProducts = products;
+        print('allProducts${allProducts.length}');
       /*     _productsBox ??= await Hive.openBox<ProductModel>('products');
         await _productsBox?.clear();
         await _productsBox?.addAll(products);

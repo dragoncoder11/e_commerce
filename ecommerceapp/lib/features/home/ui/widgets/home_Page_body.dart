@@ -12,81 +12,77 @@ class HomePageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return   Container(
-      child: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              verticalSpace(15),
-              BannersCard(),
-              verticalSpace(24),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Categories',
-                    style: Styles.font22BrownWeight700,
-                  ),
-                  Text(
-                    'see all',
-                    style: Styles.font18LightOrangeWeight400,
-                  ),
-                ],
-              ),
-              verticalSpace(24),
-              const CustomCategoriesListView(),
-              verticalSpace(16),
-              const ProductsGridView(),
-              verticalSpace(10),
-            ],
-          ),
-        ),
-      ),
-    );  
-     /*    CustomScrollView(
-      physics: const BouncingScrollPhysics(),
-      //  scrollBehavior: MaterialScrollBehavior(),
-      //shrinkWrap: true,
+    return CustomScrollView(
       slivers: [
-        SliverFillRemaining(
-          fillOverscroll: true,
-          child: SingleChildScrollView(
-            child: Column(
-              // mainAxisSize: MainAxisSize.min,
-              //crossAxisAlignment: CrossAxisAlignment.start,
-              // mainAxisAlignment: MainAxisAlignment.center,
+        SliverToBoxAdapter(
+          child: verticalSpace(15),
+        ),
+        BannersCard(),
+        SliverToBoxAdapter(
+          child: verticalSpace(10),
+        ),
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                verticalSpace(15),
-                BannersCard(),
-                verticalSpace(24),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Categories',
-                      style: Styles.font22BrownWeight700,
-                    ),
-                    Text(
-                      'see all',
-                      style: Styles.font18LightOrangeWeight400,
-                    ),
-                  ],
+                Text(
+                  'Categories',
+                  style: Styles.font22BrownWeight700,
                 ),
-                verticalSpace(24),
-                const CustomCategoriesListView(),
-                verticalSpace(16),
-                const ProductsGridView(
-                  category: 'electrionic devices',
+                Text(
+                  'see all',
+                  style: Styles.font18LightOrangeWeight400,
                 ),
-                verticalSpace(10),
               ],
             ),
           ),
         ),
+        SliverToBoxAdapter(
+          child: verticalSpace(16),
+        ),
+        const CustomCategoriesListView(),
+   
+         ProductsGridView(),
       ],
-    ); */
+    );
   }
 }
-      
+
+
+
+
+
+  /*  SliverToBoxAdapter(
+          child: BannersCard(),
+        ),
+        SliverToBoxAdapter(
+          child: verticalSpace(24),
+        ),
+        SliverToBoxAdapter(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Categories',
+                style: Styles.font22BrownWeight700,
+              ),
+              Text(
+                'see all',
+                style: Styles.font18LightOrangeWeight400,
+              ),
+            ],
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: verticalSpace(24),
+        ),
+        const CustomCategoriesListView(),
+        SliverToBoxAdapter(
+          child: verticalSpace(16),
+        ),
+        const ProductsGridView(),
+        SliverToBoxAdapter(
+          child: verticalSpace(10),
+        ), */

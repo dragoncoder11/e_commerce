@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
-
 import '../../../../../core/failure/failure.dart';
 import '../../../data/services/auth_service.dart';
 

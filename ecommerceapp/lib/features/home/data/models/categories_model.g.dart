@@ -1,4 +1,3 @@
-// categories_model.g.dart
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'categories_model.dart';

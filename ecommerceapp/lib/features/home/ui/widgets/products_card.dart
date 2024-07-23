@@ -1,11 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerceapp/core/helper/spacing.dart';
 import 'package:ecommerceapp/core/theming/styles.dart';
 import 'package:ecommerceapp/core/widgets/custom_circle_avatar.dart';
 import 'package:ecommerceapp/features/home/data/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-//import '../../../cart/logic/add_or_remove_cart_cubit/add_or_remove_cart_cubit.dart';
+import 'package:lottie/lottie.dart';
 
 class ProductCard extends StatefulWidget {
   const ProductCard({super.key, required this.productModel});
@@ -20,7 +20,7 @@ class _ProductCardState extends State<ProductCard> {
   Widget build(BuildContext context) {
    // var cubit=BlocProvider.of<AddOrRemoveCartCubit>(context);
     return Container(
-      padding: const EdgeInsets.all(5),
+      padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(15),
@@ -35,12 +35,7 @@ class _ProductCardState extends State<ProductCard> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.network(
-            widget.productModel.image!,
-            height: verticalQuery(context, .112),
-            width: horizentalQuery(context, .4),
-            fit: BoxFit.fill,
-          ),
+         Center(child: CachedNetworkImage(imageUrl: widget.productModel.image!,height: 100,placeholder: (context, url) => Lottie.asset('assets/loading.json'),)),
           verticalSpace(3),
           Text(
             widget.productModel.name!,
@@ -62,12 +57,11 @@ class _ProductCardState extends State<ProductCard> {
                     setState(() {
                       
                     });
-                 // cubit.addOrRemoveToCart(widget.productModel);
                   },
                   backGroundColor: Colors.green,
                   child: Center(
-                      child: Icon(/*  cubit.products.contains(widget.productModel)?
-                    Icons.check: */ Icons.add,
+                      child: Icon(
+                   Icons.add,
                     color: Colors.white,
                   )))
             ],
